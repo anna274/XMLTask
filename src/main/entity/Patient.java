@@ -4,12 +4,12 @@ public class Patient{
     private String name;
     private Integer age;
     private String diagnosis;
-    private Long insuranceNumber;
+    private String insuranceNumber = "not specified";
     private String covidStatus;
 
     public Patient(){}
 
-    public Patient(String name, Integer age, String diagnosis, Long insuranceNumber, String covidStatus) {
+    public Patient(String name, Integer age, String diagnosis, String insuranceNumber, String covidStatus) {
         this.name= name;
         this.age = age;
         this.diagnosis = diagnosis;
@@ -41,11 +41,11 @@ public class Patient{
         this.diagnosis = diagnosis;
     }
 
-    public Long getInsuranceNumber() {
+    public String getInsuranceNumber() {
         return insuranceNumber;
     }
 
-    public void setInsuranceNumber(Long insuranceNumber) {
+    public void setInsuranceNumber(String insuranceNumber) {
         this.insuranceNumber = insuranceNumber;
     }
 

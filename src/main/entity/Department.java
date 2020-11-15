@@ -46,8 +46,8 @@ public class Department {
     public String toString() {
         StringBuilder wardsStr = new StringBuilder();
         for(Ward ward: wards) {
-            wardsStr.append("  ").append(ward).append('\n');
+            wardsStr.append("  ").append(ward);
         }
-        return "Department '" + name + "', phone = " + phone + ", wards:\n" + wardsStr;
+        return "\nDepartment '" + name + "', phone = " + phone + ", wards:\n" + wardsStr;
     }
 }

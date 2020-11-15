@@ -39,6 +39,7 @@ public class DOMParser {
     private static Department parseDepartmentElement(Element departmentElement) {
         Department department = new Department();
         NamedNodeMap attributes = departmentElement.getAttributes();
+        department.setName(attributes.getNamedItem("name").getNodeValue());
         department.setPhone(attributes.getNamedItem("phone").getNodeValue());
         NodeList wardsNodes = departmentElement.getElementsByTagName("ward");
         for (int i = 0; i < wardsNodes.getLength(); i++) {
@@ -69,7 +70,7 @@ public class DOMParser {
         patient.setDiagnosis(attributes.getNamedItem("diagnosis").getNodeValue());
         Node insuranceNumberNode = attributes.getNamedItem("insuranceNumber");
         if(insuranceNumberNode != null) {
-            patient.setInsuranceNumber(Long.parseLong(insuranceNumberNode.getNodeValue()));
+            patient.setInsuranceNumber(insuranceNumberNode.getNodeValue());
         }
         return patient;
     }

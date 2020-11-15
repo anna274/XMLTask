@@ -58,16 +58,14 @@ public class MySAXParser extends DefaultHandler{
                 lastWard.setPlacesNumber(placesNumber);
             }
             if (qName.equals("patient")) {
-                String name = attributes.getValue("name");
-                Integer age = Integer.parseInt(attributes.getValue("age"));
-                String diagnosis = attributes.getValue("diagnosis");
-                String covidStatus = attributes.getValue("covidStatus");
-                Long ensuranceNumber = null;
-                String ensuranceNumberStr = attributes.getValue("ensuranceNumber");
-                if(ensuranceNumberStr != null){
-                    ensuranceNumber = Long.parseLong(ensuranceNumberStr);
+                Patient patient = new Patient();
+                patient.setName(attributes.getValue("name"));
+                patient.setAge(Integer.parseInt(attributes.getValue("age")));
+                patient.setDiagnosis(attributes.getValue("diagnosis"));
+                patient.setCovidStatus(attributes.getValue("covidStatus"));
+                if(attributes.getValue("ensuranceNumber") != null){
+                    patient.setInsuranceNumber(attributes.getValue("ensuranceNumber"));
                 }
-                Patient patient = new Patient(name, age, diagnosis, ensuranceNumber, covidStatus);
                 lastWard.addPatient(patient);
             }
 
