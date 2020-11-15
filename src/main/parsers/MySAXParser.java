@@ -22,7 +22,7 @@ public class MySAXParser extends DefaultHandler{
         SAXParser parser = factory.newSAXParser();
 
         MySAXParser.XMLHandler handler = new MySAXParser.XMLHandler();
-        parser.parse(new File("src/resource/hospital.xml"), handler);
+        parser.parse(new File("src/resources/hospital.xml"), handler);
 
         System.out.println(hospital);
     }
