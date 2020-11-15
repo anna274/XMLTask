@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<schema>
+    <element name="hospital">
+        <complexType>
+            <attribute name="name" type="string" use="required"/>
+            <element name="department">
+                <complexType>
+                    <attribute name="name" type="string" use="required"/>
+                    <attribute name="phone" type="string" use="optional"/>
+                    <element name="ward">
+                        <complexType>
+                            <attribute name="number" type="integer" use="required"/>
+                            <attribute name="doctor" type="string" use="required"/>
+                            <attribute name="placesNumber" type="integer" default="6"/>
+                            <element name="patient">
+                                <attribute name="name" type="string" use="required"/>
+                                <attribute name="age" type="integer" use="required"/>
+                                <attribute name="covidStatus" type="string" use="required"/>
+                                <attribute name="insuranceNumber" type="string" use="optional"/>
+                            </element>
+                        </complexType>
+                    </element>
+                </complexType>
+            </element>
+        </complexType>
+    </element>
+</schema>

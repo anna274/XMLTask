@@ -2,11 +2,13 @@ package main.entity;
 
 public class Department {
     private String name;
+    private String phone;
 
     public Department(){}
 
-    public Department(String name) {
+    public Department(String name, String phone) {
         this.name = name;
+        this.phone = phone;
     }
 
     public String getName() {
@@ -15,5 +17,13 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

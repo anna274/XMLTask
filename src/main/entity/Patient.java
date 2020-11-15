@@ -1,16 +1,26 @@
 package main.entity;
 
-public class Patient extends Human{
+public class Patient{
+    private String name;
     private Integer age;
     private String diagnosis;
     private Long insuranceNumber;
     private CovidStatus covidStatus;
 
-    public Patient(Integer age, String diagnosis, Long insuranceNumber, CovidStatus covidStatus) {
+    public Patient(String name, Integer age, String diagnosis, Long insuranceNumber, CovidStatus covidStatus) {
+        this.name= name;
         this.age = age;
         this.diagnosis = diagnosis;
         this.insuranceNumber = insuranceNumber;
         this.covidStatus = covidStatus;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getAge() {
