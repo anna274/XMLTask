@@ -1,8 +1,11 @@
 package main.entity;
 
+import java.util.ArrayList;
+
 public class Department {
     private String name;
     private String phone;
+    private ArrayList<Ward> wards = new ArrayList<>();
 
     public Department(){}
 
@@ -25,5 +28,26 @@ public class Department {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public ArrayList<Ward> getWards() {
+        return wards;
+    }
+
+    public void setWards(ArrayList<Ward> wards) {
+        this.wards = wards;
+    }
+
+    public void addWard(Ward ward) {
+        wards.add(ward);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder wardsStr = new StringBuilder();
+        for(Ward ward: wards) {
+            wardsStr.append("  ").append(ward).append('\n');
+        }
+        return "Department '" + name + "', phone = " + phone + ", wards:\n" + wardsStr;
     }
 }

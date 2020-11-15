@@ -6,9 +6,10 @@ public class Ward {
     private Integer number;
     private String doctor;
     private Integer placesNumber;
-    private ArrayList<Patient> patients;
+    private ArrayList<Patient> patients = new ArrayList<>();
 
-    public Ward() {}
+    public Ward() {
+    }
 
     public Ward(Integer number, String doctor, Integer placesNumber, ArrayList<Patient> patients) {
         this.number = number;
@@ -47,5 +48,18 @@ public class Ward {
 
     public void setPatients(ArrayList<Patient> patients) {
         this.patients = patients;
+    }
+
+    public void addPatient(Patient patient) {
+        patients.add(patient);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder patientsStr = new StringBuilder();
+        for(Patient p: patients) {
+            patientsStr.append("  ").append(p).append("\n");
+        }
+        return "Ward № '" + number + "', doctor = " + doctor + ", patients:\n" + patientsStr;
     }
 }

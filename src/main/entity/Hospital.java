@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Hospital {
     private String name;
-    private ArrayList<Department> departments;
+    private ArrayList<Department> departments = new ArrayList<>();
 
     public Hospital(){}
 
@@ -27,5 +27,18 @@ public class Hospital {
 
     public void setDepartments(ArrayList<Department> departments) {
         this.departments = departments;
+    }
+
+    public void addDepartment(Department department) {
+        departments.add(department);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder departmentsStr = new StringBuilder();
+        for(Department d: departments) {
+            departmentsStr.append("  ").append(d).append('\n');
+        }
+        return "Hospital: " + name + ", departments:\n" + departmentsStr;
     }
 }
