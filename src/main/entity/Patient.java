@@ -57,13 +57,13 @@ public class Patient{
         this.covidStatus = covidStatus;
     }
 
-    @Override
-    public String toString() {
-        return "Patient: " +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", diagnosis='" + diagnosis + '\'' +
-                ", insuranceNumber=" + insuranceNumber +
-                ", covidStatus='" + covidStatus;
+    public static void printPatientInfo(Patient patient) {
+        System.out.println(
+                "Patient: " +
+                "name='" + patient.getName() + '\'' +
+                ", age=" + patient.getAge() +
+                ", diagnosis='" + patient.getDiagnosis() + '\'' +
+                ", insuranceNumber=" + patient.getInsuranceNumber() +
+                ", covidStatus='" + patient.getCovidStatus());
     }
 }

@@ -24,17 +24,13 @@ public class MySAXParser extends DefaultHandler{
         MySAXParser.XMLHandler handler = new MySAXParser.XMLHandler();
         parser.parse(new File("src/resources/hospital.xml"), handler);
 
-        System.out.println(hospital);
+        Hospital.printHospitalInfo(hospital);
     }
 
     private static class XMLHandler extends DefaultHandler {
 
         @Override
         public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-            // Тут будет логика реакции на начало элемента
-            // uri — это пространство, в котором находится элемент,
-            // localName — это имя элемента без префикса,
-            // qName — это имя элемента с префиксом (если он есть, иначе просто имя элемента).
 
             if (qName.equals("hospital")) {
                 String name = attributes.getValue("name");

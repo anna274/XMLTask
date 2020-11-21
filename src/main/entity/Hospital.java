@@ -33,12 +33,11 @@ public class Hospital {
         departments.add(department);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder departmentsStr = new StringBuilder();
-        for(Department d: departments) {
-            departmentsStr.append("  ").append(d).append('\n');
+    public static void printHospitalInfo(Hospital hospital) {
+        System.out.println("Hospital: " + hospital.getName() + ", departments:");
+        for(Department department: hospital.getDepartments()) {
+            Department.printDepartmentInfo(department);
         }
-        return "Hospital: " + name + ", departments:\n" + departmentsStr;
+
     }
 }

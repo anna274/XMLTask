@@ -42,12 +42,10 @@ public class Department {
         wards.add(ward);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder wardsStr = new StringBuilder();
-        for(Ward ward: wards) {
-            wardsStr.append("  ").append(ward);
+    public static void printDepartmentInfo(Department department) {
+        System.out.println("Department '" + department.getName() + "', phone = " + department.getPhone() + ", wards:");
+        for(Ward ward: department.getWards()) {
+            Ward.printWardInfo(ward);
         }
-        return "\nDepartment '" + name + "', phone = " + phone + ", wards:\n" + wardsStr;
     }
 }

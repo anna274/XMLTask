@@ -54,12 +54,10 @@ public class Ward {
         patients.add(patient);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder patientsStr = new StringBuilder();
-        for(Patient p: patients) {
-            patientsStr.append("  ").append(p).append("\n");
+    public static void printWardInfo(Ward ward) {
+        System.out.println("Ward № '" + ward.getNumber() + "', doctor = " + ward.getDoctor() + ", patients:");
+        for(Patient patient: ward.getPatients()) {
+            Patient.printPatientInfo(patient);
         }
-        return "Ward № '" + number + "', doctor = " + doctor + ", patients:\n" + patientsStr;
     }
 }

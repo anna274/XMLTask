@@ -22,7 +22,7 @@ public class DOMParser {
         Element root = document.getDocumentElement();
         Node hospitalNode = root.getElementsByTagName("hospital").item(0);
         Hospital hospital = parseHospitalElement((Element)hospitalNode);
-        System.out.println(hospital);
+        Hospital.printHospitalInfo(hospital);
     }
 
     private static Hospital parseHospitalElement(Element hospitalElement) {
