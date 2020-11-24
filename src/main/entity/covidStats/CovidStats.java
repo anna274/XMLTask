@@ -3,25 +3,25 @@ package main.entity.covidStats;
 import java.util.ArrayList;
 
 public class CovidStats {
-    ArrayList<IStatItem> items = new ArrayList<>();
+    ArrayList<StatItem> items = new ArrayList<>();
 
     public CovidStats(){}
 
-    public CovidStats(ArrayList<IStatItem> items) {
+    public CovidStats(ArrayList<StatItem> items) {
         this.items = items;
     }
 
-    public ArrayList<IStatItem> getItems() {
+    public ArrayList<StatItem> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<IStatItem> items) {
+    public void setItems(ArrayList<StatItem> items) {
         this.items = items;
     }
 
     public double inCriticalState(){
         double inCriticalStateNumber = 0;
-        for(IStatItem item: items) {
+        for(StatItem item: items) {
             if(item.isCritical()) {
                 inCriticalStateNumber += 1;
             }
@@ -32,7 +32,7 @@ public class CovidStats {
     public int getAverageAgeOfRecovered() {
         int recoveredNumber = 0;
         int summarizedAge = 0;
-        for(IStatItem item: items) {
+        for(StatItem item: items) {
             if(item.getStatus().equals("recovered")) {
                 recoveredNumber += 1;
                 summarizedAge += item.getAge();

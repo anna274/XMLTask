@@ -4,7 +4,7 @@ import main.entity.Patient;
 
 import java.util.ArrayList;
 
-public class PatientAdapter implements IStatItem {
+public class PatientAdapter implements StatItem {
     private Patient patient;
 
     public PatientAdapter(Patient patient) {
@@ -30,8 +30,8 @@ public class PatientAdapter implements IStatItem {
         return patient.getCovidStateCode() != null && patient.getCovidStateCode() == 5;
     }
 
-    public static ArrayList<IStatItem> adapt(ArrayList<Patient> patients) {
-        ArrayList<IStatItem> adaptedPatients = new ArrayList<>();
+    public static ArrayList<StatItem> adapt(ArrayList<Patient> patients) {
+        ArrayList<StatItem> adaptedPatients = new ArrayList<>();
         for(Patient patient: patients) {
             adaptedPatients.add(new PatientAdapter(patient));
         }

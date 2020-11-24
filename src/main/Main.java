@@ -3,7 +3,7 @@ package main;
 import main.entity.Hospital;
 import main.entity.Patient;
 import main.entity.covidStats.CovidStats;
-import main.entity.covidStats.IStatItem;
+import main.entity.covidStats.StatItem;
 import main.entity.covidStats.PatientAdapter;
 import main.entity.patientFilters.AgeFilter;
 import main.entity.patientFilters.StatusFilter;
@@ -33,7 +33,7 @@ public class Main {
 
         // usage of CovidStats with Patients through PatientAdapter
 
-        ArrayList<IStatItem> adapted = PatientAdapter.adapt(patients);
+        ArrayList<StatItem> adapted = PatientAdapter.adapt(patients);
         CovidStats stats = new CovidStats(adapted);
         stats.displayStats();
 
