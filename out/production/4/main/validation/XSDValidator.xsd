@@ -17,6 +17,7 @@
                                     <attribute name="name" type="string" use="required"/>
                                     <attribute name="age" type="integer" use="required"/>
                                     <attribute name="covidStatus" type="string" use="required"/>
+                                    <attribute name="covidStateCode" type="integer" use="optional"/>
                                     <attribute name="insuranceNumber" type="string" use="optional"/>
                                 </element>
                             </complexType>

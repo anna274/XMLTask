@@ -10,8 +10,8 @@
                 <patient name="Ivanov-3" age="24" insuranceNumber="234785" diagnosis="broken arm" covidStatus="healthy"/>
             </ward>
             <ward number="2" doctor="Sidorov" placesNumber="3">
-                <patient name="Sidorov-1" age="45" insuranceNumber="234785" diagnosis="broken arm" covidStatus="sick"/>
-                <patient name="Sidorov-2" age="36" diagnosis="broken arm" covidStatus="sick no sypmtoms"/>
+                <patient name="Sidorov-1" age="45" insuranceNumber="234785" diagnosis="broken arm" covidStatus="sick" covidStateCode="1"/>
+                <patient name="Sidorov-2" age="36" diagnosis="broken arm" covidStatus="sick" covidStateCode="5"/>
             </ward>
         </department>
         <department name="neurological" phone="32748">

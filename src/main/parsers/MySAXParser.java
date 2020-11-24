@@ -27,6 +27,16 @@ public class MySAXParser extends DefaultHandler{
         Hospital.printHospitalInfo(hospital);
     }
 
+    public static Hospital parseHospitalXml(String url) throws ParserConfigurationException, SAXException, IOException {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+
+        MySAXParser.XMLHandler handler = new MySAXParser.XMLHandler();
+        parser.parse(new File(url), handler);
+
+        return hospital;
+    }
+
     private static class XMLHandler extends DefaultHandler {
 
         @Override
@@ -54,13 +64,17 @@ public class MySAXParser extends DefaultHandler{
                 lastWard.setPlacesNumber(placesNumber);
             }
             if (qName.equals("patient")) {
-                Patient patient = new Patient();
-                patient.setName(attributes.getValue("name"));
-                patient.setAge(Integer.parseInt(attributes.getValue("age")));
-                patient.setDiagnosis(attributes.getValue("diagnosis"));
-                patient.setCovidStatus(attributes.getValue("covidStatus"));
-                if(attributes.getValue("ensuranceNumber") != null){
-                    patient.setInsuranceNumber(attributes.getValue("ensuranceNumber"));
+                Patient patient = new Patient.PatientBuilder()
+                        .setName(attributes.getValue("name"))
+                        .setAge(Integer.parseInt(attributes.getValue("age")))
+                        .setDiagnosis(attributes.getValue("diagnosis"))
+                        .setCovidStatus(attributes.getValue("covidStatus"))
+                        .build();
+                if(attributes.getValue("insuranceNumber") != null){
+                    patient.setInsuranceNumber(attributes.getValue("insuranceNumber"));
+                }
+                if(attributes.getValue("covidStateCode") != null){
+                    patient.setCovidStateCode(Integer.parseInt(attributes.getValue("covidStateCode")));
                 }
                 lastWard.addPatient(patient);
             }

@@ -38,6 +38,13 @@ public class Hospital {
         for(Department department: hospital.getDepartments()) {
             Department.printDepartmentInfo(department);
         }
+    }
 
+    public ArrayList<Patient> getHospitalPatients() {
+        ArrayList<Patient> hospitalPatients = new ArrayList<>();
+        for(Department department: departments) {
+            hospitalPatients.addAll(department.getDepartmentPatients());
+        }
+        return hospitalPatients;
     }
 }

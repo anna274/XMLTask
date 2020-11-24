@@ -25,6 +25,22 @@ public class DOMParser {
         Hospital.printHospitalInfo(hospital);
     }
 
+    public static Hospital parseHospitalXml(String url) {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = null;
+        try {
+            builder = factory.newDocumentBuilder();
+            Document document = null;
+            document = builder.parse(url);
+            Element root = document.getDocumentElement();
+            Node hospitalNode = root.getElementsByTagName("hospital").item(0);
+            return parseHospitalElement((Element)hospitalNode);
+        } catch (SAXException | IOException | ParserConfigurationException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     private static Hospital parseHospitalElement(Element hospitalElement) {
         Hospital hospital = new Hospital();
         NamedNodeMap attributes = hospitalElement.getAttributes();
@@ -62,15 +78,20 @@ public class DOMParser {
     }
 
     private static Patient parsePatientElement(Element patientNode) {
-        Patient patient = new Patient();
         NamedNodeMap attributes = patientNode.getAttributes();
-        patient.setName(attributes.getNamedItem("name").getNodeValue());
-        patient.setAge(Integer.parseInt(attributes.getNamedItem("age").getNodeValue()));
-        patient.setCovidStatus(attributes.getNamedItem("covidStatus").getNodeValue());
-        patient.setDiagnosis(attributes.getNamedItem("diagnosis").getNodeValue());
+        Patient patient = new Patient.PatientBuilder()
+                .setName(attributes.getNamedItem("name").getNodeValue())
+                .setAge(Integer.parseInt(attributes.getNamedItem("age").getNodeValue()))
+                .setDiagnosis(attributes.getNamedItem("diagnosis").getNodeValue())
+                .setCovidStatus(attributes.getNamedItem("covidStatus").getNodeValue())
+                .build();
         Node insuranceNumberNode = attributes.getNamedItem("insuranceNumber");
+        Node covidStateCodeNode = attributes.getNamedItem("covidStateCode");
         if(insuranceNumberNode != null) {
             patient.setInsuranceNumber(insuranceNumberNode.getNodeValue());
+        }
+        if(covidStateCodeNode != null) {
+            patient.setCovidStateCode(Integer.parseInt(covidStateCodeNode.getNodeValue()));
         }
         return patient;
     }

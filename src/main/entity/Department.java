@@ -48,4 +48,12 @@ public class Department {
             Ward.printWardInfo(ward);
         }
     }
+
+    public  ArrayList<Patient> getDepartmentPatients() {
+        ArrayList<Patient> departmentPatients = new ArrayList<>();
+        for(Ward ward: wards) {
+            departmentPatients.addAll(ward.getPatients());
+        }
+        return departmentPatients;
+    }
 }
