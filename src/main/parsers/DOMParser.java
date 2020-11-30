@@ -4,6 +4,7 @@ import main.entity.Department;
 import main.entity.Hospital;
 import main.entity.Patient;
 import main.entity.Ward;
+import main.util.PrintEntityUtils;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -11,6 +12,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.stream.IntStream;
 
 public class DOMParser {
 
@@ -20,9 +22,12 @@ public class DOMParser {
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse("src/resources/hospital.xml");
         Element root = document.getDocumentElement();
-        Node hospitalNode = root.getElementsByTagName("hospital").item(0);
-        Hospital hospital = parseHospitalElement((Element)hospitalNode);
-        Hospital.printHospitalInfo(hospital);
+
+        NodeList nodeList = root.getElementsByTagName("hospital");
+        IntStream.range(0, nodeList.getLength())
+                .mapToObj(nodeList::item)
+                .map(node -> parseHospitalElement((Element) node))
+                .forEach(PrintEntityUtils::printHospitalInfo);
     }
 
     private static Hospital parseHospitalElement(Element hospitalElement) {
@@ -30,9 +35,9 @@ public class DOMParser {
         NamedNodeMap attributes = hospitalElement.getAttributes();
         hospital.setName(attributes.getNamedItem("name").getNodeValue());
         NodeList departmentNodes = hospitalElement.getElementsByTagName("department");
-        for (int i = 0; i < departmentNodes.getLength(); i++) {
-            hospital.addDepartment(parseDepartmentElement((Element)departmentNodes.item(i)));
-        }
+        IntStream.range(0, departmentNodes.getLength())
+                .mapToObj(i -> parseDepartmentElement((Element) departmentNodes.item(i)))
+                .forEach(hospital::addDepartment);
         return hospital;
     }
 
@@ -42,9 +47,9 @@ public class DOMParser {
         department.setName(attributes.getNamedItem("name").getNodeValue());
         department.setPhone(attributes.getNamedItem("phone").getNodeValue());
         NodeList wardsNodes = departmentElement.getElementsByTagName("ward");
-        for (int i = 0; i < wardsNodes.getLength(); i++) {
-            department.addWard(parseWardElement((Element)wardsNodes.item(i)));
-        }
+        IntStream.range(0, wardsNodes.getLength())
+                .mapToObj(i -> parseWardElement((Element) wardsNodes.item(i)))
+                .forEach(department::addWard);
         return department;
     }
 
@@ -55,9 +60,9 @@ public class DOMParser {
         ward.setPlacesNumber(Integer.parseInt(attributes.getNamedItem("placesNumber").getNodeValue()));
         ward.setDoctor(attributes.getNamedItem("doctor").getNodeValue());
         NodeList patientNodes = wardNode.getElementsByTagName("patient");
-        for (int i = 0; i < patientNodes.getLength(); i++) {
-            ward.addPatient(parsePatientElement((Element)patientNodes.item(i)));
-        }
+        IntStream.range(0, patientNodes.getLength())
+                .mapToObj(i -> parsePatientElement((Element) patientNodes.item(i)))
+                .forEach(ward::addPatient);
         return ward;
     }
 

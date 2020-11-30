@@ -53,11 +53,4 @@ public class Ward {
     public void addPatient(Patient patient) {
         patients.add(patient);
     }
-
-    public static void printWardInfo(Ward ward) {
-        System.out.println("Ward № '" + ward.getNumber() + "', doctor = " + ward.getDoctor() + ", patients:");
-        for(Patient patient: ward.getPatients()) {
-            Patient.printPatientInfo(patient);
-        }
-    }
 }

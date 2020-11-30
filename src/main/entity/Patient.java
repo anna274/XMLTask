@@ -56,14 +56,4 @@ public class Patient{
     public void setCovidStatus(String covidStatus) {
         this.covidStatus = covidStatus;
     }
-
-    public static void printPatientInfo(Patient patient) {
-        System.out.println(
-                "Patient: " +
-                "name='" + patient.getName() + '\'' +
-                ", age=" + patient.getAge() +
-                ", diagnosis='" + patient.getDiagnosis() + '\'' +
-                ", insuranceNumber=" + patient.getInsuranceNumber() +
-                ", covidStatus='" + patient.getCovidStatus());
-    }
 }

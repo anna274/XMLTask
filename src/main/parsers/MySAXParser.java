@@ -1,6 +1,7 @@
 package main.parsers;
 
 import main.entity.*;
+import main.util.PrintEntityUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -24,7 +25,7 @@ public class MySAXParser extends DefaultHandler{
         MySAXParser.XMLHandler handler = new MySAXParser.XMLHandler();
         parser.parse(new File("src/resources/hospital.xml"), handler);
 
-        Hospital.printHospitalInfo(hospital);
+        PrintEntityUtils.printHospitalInfo(hospital);
     }
 
     private static class XMLHandler extends DefaultHandler {

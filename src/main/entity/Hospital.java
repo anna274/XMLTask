@@ -32,12 +32,4 @@ public class Hospital {
     public void addDepartment(Department department) {
         departments.add(department);
     }
-
-    public static void printHospitalInfo(Hospital hospital) {
-        System.out.println("Hospital: " + hospital.getName() + ", departments:");
-        for(Department department: hospital.getDepartments()) {
-            Department.printDepartmentInfo(department);
-        }
-
-    }
 }

@@ -41,11 +41,4 @@ public class Department {
     public void addWard(Ward ward) {
         wards.add(ward);
     }
-
-    public static void printDepartmentInfo(Department department) {
-        System.out.println("Department '" + department.getName() + "', phone = " + department.getPhone() + ", wards:");
-        for(Ward ward: department.getWards()) {
-            Ward.printWardInfo(ward);
-        }
-    }
 }
